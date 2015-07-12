@@ -33,7 +33,7 @@ public abstract class AdapterM<T> extends BaseAdapter {
 	}
 	
 	/**
-	 * 构造方法(与上一个只有数据源不同)
+	 * 构造方法(与上一个只有数据源不同)  
 	 * @param context
 	 * @param layoutId
 	 * @param dataArray
