@@ -8,33 +8,33 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 /**
- * ¼Ì³ĞRelativeLayout£¬×Ô¶¨Òå±êÌâÀ¸
+ * ç»§æ‰¿RelativeLayoutï¼Œè‡ªå®šä¹‰æ ‡é¢˜æ 
  * @author landptf
  * @date 2015-6-10
  */
 public class TitleBarM extends RelativeLayout{
 	private Context context;
-	//¶¨ÒåÈı¸ö¿Ø¼ş£¬
+	//å®šä¹‰ä¸‰ä¸ªæ§ä»¶
 	private ButtonM btnLeft;
 	private TextView tvTitle;
 	private ButtonM btnRight;
-	//¶¨Òå×ó²à¿Ø¼şµÄ½Ó¿Ú
+	//å®šä¹‰å·¦ä¾§æ§ä»¶çš„æ¥å£
 	private OnClickListenerL onClickListenerL = null;
-	//¶¨ÒåÓÒ²à¿Ø¼şµÄ½Ó¿Ú
+	//å®šä¹‰å³ä¾§æ§ä»¶çš„æ¥å£
 	private OnClickListenerR onClickListenerR = null;
 	
 	public interface OnClickListenerL{
-		//¶¨ÒåÒ»¸ö·½·¨
+		//å®šä¹‰ä¸€ä¸ªæ–¹æ³•
 		public void onClick(View v);
 	}
 	
 	public interface OnClickListenerR{
-		//¶¨ÒåÒ»¸ö·½·¨
+		//å®šä¹‰ä¸€ä¸ªæ–¹æ³•
 		public void onClick(View v);
 	}
 
 	/**
-	 * Îª×ó²à¿Ø¼ş°ó¶¨ÊÂ¼ş
+	 * ä¸ºå·¦ä¾§æ§ä»¶ç»‘å®šäº‹ä»¶
 	 * @param onClickListenerL
 	 */
 	public void setOnClickLisenerL(OnClickListenerL onClickListenerL) {
@@ -42,7 +42,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 	
 	/**
-	 * ÎªÓÒ²à¿Ø¼ş°ó¶¨ÊÂ¼ş
+	 * ä¸ºå³ä¾§æ§ä»¶ç»‘å®šäº‹ä»¶
 	 * @param onClickListenerR
 	 */
 	public void setOnClickLisenerR(OnClickListenerR onClickListenerR) {
@@ -60,26 +60,26 @@ public class TitleBarM extends RelativeLayout{
 	public TitleBarM(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		this.context = context;
-		//ÉèÖÃRelativeLayoutµÄ²¼¾Ö
+		//è®¾ç½®RelativeLayoutçš„å¸ƒå±€
 		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
-		//ÉèÖÃÄ¬ÈÏµÄ±³¾°É«
+		//è®¾ç½®é»˜è®¤çš„èƒŒæ™¯è‰²
 		setBackgroundColor(Color.parseColor("#B674D2"));
 		init();
 	}
 
 	private void init() {
-		//³õÊ¼»¯×ó²àButtonM
+		//åˆå§‹åŒ–å·¦ä¾§ButtonM
 		btnLeft = new ButtonM(context);
 		RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		//´¹Ö±¾ÓÖĞ
+		//å‚ç›´å±…ä¸­
 		lp.addRule(RelativeLayout.CENTER_VERTICAL);
-		//ÉèÖÃ¾àÀë×ó²à10dp
+		//è®¾ç½®è·ç¦»å·¦ä¾§10dp
 		lp.leftMargin = dp2px(context, 10);
 		btnLeft.setLayoutParams(lp);
-		btnLeft.setTextSize(16);//ÉèÖÃ×ÖÌå´óĞ¡,Ä¬ÈÏÎª16
-		btnLeft.setTextColori(Color.WHITE);//Ä¬ÈÏ×ÖÌåÑÕÉ«Îª°×É«
-		btnLeft.setTextColorSelected("#909090");//°´ÏÂºóµÄ×ÖÌåÑÕÉ«
-		//¶¨ÒåÆäµã»÷ÊÂ¼ş
+		btnLeft.setTextSize(16);//è®¾ç½®å­—ä½“å¤§å°,é»˜è®¤ä¸º16
+		btnLeft.setTextColori(Color.WHITE);//é»˜è®¤å­—ä½“é¢œè‰²ä¸ºç™½è‰²
+		btnLeft.setTextColorSelected("#909090");//æŒ‰ä¸‹åçš„å­—ä½“é¢œè‰²
+		//å®šä¹‰å…¶ç‚¹å‡»äº‹ä»¶
 		btnLeft.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -88,27 +88,27 @@ public class TitleBarM extends RelativeLayout{
 				}
 			}
 		});
-		//³õÊ¼»¯ÖĞ¼ä±êÌâ¿Ø¼ş
+		//åˆå§‹åŒ–ä¸­é—´æ ‡é¢˜æ§ä»¶
 		tvTitle = new TextView(context);
 		lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		//Ê¹Æä´¦ÓÚ¸¸¿Ø¼şµÄÖĞ¼äÎ»ÖÃ£¬Ò²ÓĞÒ»Ğ©APPµÄ±êÌâÆ«×ó£¬¿É¸ù¾İÏîÄ¿ĞèÒª×ÔĞĞµ÷Õû£¬Ò²¿É¶¯Ì¬ÉèÖÃ
+		//ä½¿å…¶å¤„äºçˆ¶æ§ä»¶çš„ä¸­é—´ä½ç½®ï¼Œä¹Ÿæœ‰ä¸€äº›APPçš„æ ‡é¢˜åå·¦ï¼Œå¯æ ¹æ®é¡¹ç›®éœ€è¦è‡ªè¡Œè°ƒæ•´ï¼Œä¹Ÿå¯åŠ¨æ€è®¾ç½®
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
 		tvTitle.setLayoutParams(lp);
-		//ÉèÖÃ±êÌâÎÄ×ÖÑÕÉ«
+		//è®¾ç½®æ ‡é¢˜æ–‡å­—é¢œè‰²
 		tvTitle.setTextColor(Color.WHITE);
-		//ÉèÖÃ±êÌâÎÄ×Ö´óĞ¡
-		tvTitle.setTextSize(18);//Ä¬ÈÏÎª18
-		//³õÊ¼»¯ÓÒ²àButtonM
+		//è®¾ç½®æ ‡é¢˜æ–‡å­—å¤§å°
+		tvTitle.setTextSize(18);//é»˜è®¤ä¸º18
+		//åˆå§‹åŒ–å³ä¾§ButtonM
 		btnRight = new ButtonM(context);
 		lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		lp.rightMargin = dp2px(context, 10);
-		//´¹Ö±¾ÓÖĞ
+		//å‚ç›´å±…ä¸­
 		lp.addRule(RelativeLayout.CENTER_VERTICAL);
-		//¾ÓÓÚ¸¸¿Ø¼şµÄÓÒ²à
+		//å±…äºçˆ¶æ§ä»¶çš„å³ä¾§
 		lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		btnRight.setLayoutParams(lp);
-		btnRight.setTextSize(16);//Ä¬ÈÏÓĞ16
-		btnRight.setVisibility(View.GONE); //Ä¬ÈÏÒş²ØÓÒ²à¿Ø¼ş
+		btnRight.setTextSize(16);//é»˜è®¤æœ‰16
+		btnRight.setVisibility(View.GONE); //é»˜è®¤éšè—å³ä¾§æ§ä»¶
 		btnRight.setTextColori(Color.WHITE);
 		btnRight.setTextColorSelected("#909090");
 		btnRight.setOnClickListener(new OnClickListener() {
@@ -120,14 +120,14 @@ public class TitleBarM extends RelativeLayout{
 			}
 		});
 		
-		//·Ö±ğ½«Èı¸ö¿Ø¼ş¼ÓÈëµ½ÈİÆ÷ÖĞ
+		//åˆ†åˆ«å°†ä¸‰ä¸ªæ§ä»¶åŠ å…¥åˆ°å®¹å™¨ä¸­
 		addView(btnLeft);
 		addView(tvTitle);
 		addView(btnRight);
 	}
 
 	/**
-	 * ÉèÖÃ±êÌâÀ¸µÄ±³¾°É« £¬String
+	 * è®¾ç½®æ ‡é¢˜æ çš„èƒŒæ™¯è‰² ï¼ŒString
 	 * @param backColors
 	 */
 	public void setBackColor(String backColors) {
@@ -135,7 +135,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃ±êÌâÀ¸µÄ±³¾°É« £¬int
+	 * è®¾ç½®æ ‡é¢˜æ çš„èƒŒæ™¯è‰² ï¼Œint
 	 * @param backColori
 	 */
 	public void setBackColor(int backColori) {
@@ -143,7 +143,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃ×ó²à¿Ø¼şÏÔÊ¾µÄÎÄ×Ö
+	 * è®¾ç½®å·¦ä¾§æ§ä»¶æ˜¾ç¤ºçš„æ–‡å­—
 	 * @param leftText
 	 */
 	public void setLeftText(String leftText) {
@@ -151,7 +151,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃ×ó²à¿Ø¼şµÄ±³¾°Í¼
+	 * è®¾ç½®å·¦ä¾§æ§ä»¶çš„èƒŒæ™¯å›¾
 	 * @param leftBackImage
 	 */
 	public void setLeftBackImage(int leftBackImage) {
@@ -161,7 +161,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃ×ó²à¿Ø¼şÑ¡ÖĞµÄ±³¾°Í¼
+	 * è®¾ç½®å·¦ä¾§æ§ä»¶é€‰ä¸­çš„èƒŒæ™¯å›¾
 	 * @param leftBackImageSeleted
 	 */
 	public void setLeftBackImageSeleted(int leftBackImageSeleted) {
@@ -171,7 +171,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃ×ó²à¿Ø¼şÏÔÊ¾ÊôĞÔ£¬Ä¬ÈÏÎªÏÔÊ¾
+	 * è®¾ç½®å·¦ä¾§æ§ä»¶æ˜¾ç¤ºå±æ€§ï¼Œé»˜è®¤ä¸ºæ˜¾ç¤º
 	 * @param leftVisible
 	 */
 	public void setLeftVisible(boolean leftVisible) {
@@ -179,7 +179,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃ×ó²à¿Ø¼şÏÔÊ¾µÄ×ÖÌå´óĞ¡
+	 * è®¾ç½®å·¦ä¾§æ§ä»¶æ˜¾ç¤ºçš„å­—ä½“å¤§å°
 	 * @param leftTextSize
 	 */
 	public void setLeftTextSize(float leftTextSize) {
@@ -187,7 +187,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 	
 	/**
-	 * ÉèÖÃÖĞ¼ä¿Ø¼şÏÔÊ¾ÊôĞÔ£¬Ä¬ÈÏÎªÏÔÊ¾
+	 * è®¾ç½®ä¸­é—´æ§ä»¶æ˜¾ç¤ºå±æ€§ï¼Œé»˜è®¤ä¸ºæ˜¾ç¤º
 	 * @param leftVisible
 	 */
 	public void setTitleVisible(boolean titleVisible) {
@@ -195,7 +195,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃÖĞ¼ä¿Ø¼şµÄÎÄ×Ö
+	 * è®¾ç½®ä¸­é—´æ§ä»¶çš„æ–‡å­—
 	 * @param titleText
 	 */
 	public void setTitleText(String titleText) {
@@ -203,7 +203,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃÖĞ¼ä¿Ø¼şµÄÎÄ×ÖµÄ´óĞ¡
+	 * è®¾ç½®ä¸­é—´æ§ä»¶çš„æ–‡å­—çš„å¤§å°
 	 * @param titleTextSize
 	 */
 	public void setTitleTextSize(float titleTextSize) {
@@ -211,7 +211,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 	
 	/**
-	 * ÉèÖÃÓÒ²à¿Ø¼şÏÔÊ¾µÄÎÄ×Ö
+	 * è®¾ç½®å³ä¾§æ§ä»¶æ˜¾ç¤ºçš„æ–‡å­—
 	 * @param leftText
 	 */
 	public void setRightText(String rightText) {
@@ -219,7 +219,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃÓÒ²à¿Ø¼şµÄ±³¾°Í¼
+	 * è®¾ç½®å³ä¾§æ§ä»¶çš„èƒŒæ™¯å›¾
 	 * @param leftBackImage
 	 */
 	public void setRightBackImage(int rightBackImage) {
@@ -229,7 +229,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃÓÒ²à¿Ø¼şÑ¡ÖĞµÄ±³¾°Í¼
+	 * è®¾ç½®å³ä¾§æ§ä»¶é€‰ä¸­çš„èƒŒæ™¯å›¾
 	 * @param leftBackImageSeleted
 	 */
 	public void setRightBackImageSeleted(int rightBackImageSeleted) {
@@ -239,7 +239,7 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	/**
-	 * ÉèÖÃÓÒ²à¿Ø¼şÏÔÊ¾µÄ×ÖÌå´óĞ¡
+	 * è®¾ç½®å³ä¾§æ§ä»¶æ˜¾ç¤ºçš„å­—ä½“å¤§å°
 	 * @param leftTextSize
 	 */
 	public void setRightTextSize(float rightTextSize) {
@@ -247,14 +247,14 @@ public class TitleBarM extends RelativeLayout{
 	}
 	
 	/**
-	 * ÉèÖÃÓÒ²à¿Ø¼şÏÔÊ¾ÊôĞÔ£¬Ä¬ÈÏÎªÒş²Ø
+	 * è®¾ç½®å³ä¾§æ§ä»¶æ˜¾ç¤ºå±æ€§ï¼Œé»˜è®¤ä¸ºéšè—	
 	 * @param leftVisible
 	 */
 	public void setRightVisible(boolean rightVisible) {
 		btnRight.setVisibility(rightVisible ? View.VISIBLE : View.GONE); 
 	}
 	
-	//¶¨ÒåÒ»¸öË½ÓĞ·½·¨dp2px
+	//å®šä¹‰ä¸€ä¸ªç§æœ‰æ–¹æ³•dp2px
 	private int dp2px(Context context, float dpVal) {
 		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
 				dpVal, context.getResources().getDisplayMetrics());

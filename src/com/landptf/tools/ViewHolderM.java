@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 /**
  * @author landptf
- * ¹«¹²µÄViewHolder
+ * å…¬å…±çš„ViewHolder
  */
 public class ViewHolderM {
 	private SparseArray<View> viewArray;
@@ -20,7 +20,7 @@ public class ViewHolderM {
 	private Object tag;
 
 	/** 
-	 * ¹¹Ôì·½·¨
+	 * æ„é€ æ–¹æ³•
 	 * @param context
 	 * @param convertView
 	 * @param parent
@@ -30,21 +30,21 @@ public class ViewHolderM {
 	public ViewHolderM(Context context, View convertView, ViewGroup parent,
 			int layoutId, int position) {
 		this.position = position;
-		//Ê¹ÓÃSparseArrayĞ§ÂÊ¸ßÒ»Ğ©
+		//ä½¿ç”¨SparseArrayæ•ˆç‡é«˜ä¸€äº›
 		viewArray = new SparseArray<View>();
-		//¼ÓÔØ²¼¾Ö
+		//åŠ è½½å¸ƒå±€
 		mConvertView = LayoutInflater.from(context).inflate(layoutId, parent,false);
-		//½«ViewHolderM¸³Öµ¸øViewµÄTag
+		//å°†ViewHolderMèµ‹å€¼ç»™Viewçš„Tag
 		mConvertView.setTag(this);
 	}
 
 	public static ViewHolderM get(Context context, View convertView,
 			ViewGroup parent, int layoutId, int position) {
 		if (convertView == null) {
-			//Èç¹ûconvertViewÎª¿Õ£¬ÔòÊµÀı»¯ViewHolderM
+			//å¦‚æœconvertViewä¸ºç©ºï¼Œåˆ™å®ä¾‹åŒ–ViewHolderM
 			return new ViewHolderM(context, convertView, parent, layoutId,position);
 		} else {
-			//·ñÔò´ÓconvertViewµÄTagÖĞÈ¡³öViewHolderM£¬±ÜÃâÖØ¸´´´½¨ 
+			//å¦åˆ™ä»convertViewçš„Tagä¸­å–å‡ºViewHolderMï¼Œé¿å…é‡å¤åˆ›å»º 
 			ViewHolderM holder = (ViewHolderM) convertView.getTag();
 			holder.position = position;
 			return holder;
@@ -72,7 +72,7 @@ public class ViewHolderM {
 	}
 
 	/**
-	 * Í¨¹ıviewId»ñÈ¡¿Ø¼ş¶ÔÏó
+	 * é€šè¿‡viewIdè·å–æ§ä»¶å¯¹è±¡
 	 * @param viewId
 	 * @return
 	 */
@@ -87,12 +87,12 @@ public class ViewHolderM {
 	}
 	
 	
-	/**------------------------------------»ªÀöµÄ·Ö¸îÏß------------------------------------*/
-	/**ÒÔÏÂ·½·¨Îª¶îÍâ·â×°µÄ·½·¨£¬Ö»ÊÇ¼òµ¥¼¸¸ö£¬ÒÔºó¿ÉÒÔÂıÂıÍêÉÆ*/
+	/**------------------------------------åä¸½çš„åˆ†å‰²çº¿------------------------------------*/
+	/**ä»¥ä¸‹æ–¹æ³•ä¸ºé¢å¤–å°è£…çš„æ–¹æ³•ï¼Œåªæ˜¯ç®€å•å‡ ä¸ªï¼Œä»¥åå¯ä»¥æ…¢æ…¢å®Œå–„*/
 	
 	
 	/**
-	 * ÉèÖÃTextViewµÄÄÚÈİ
+	 * è®¾ç½®TextViewçš„å†…å®¹
 	 * @param viewId
 	 * @param text
 	 * @return
@@ -104,9 +104,9 @@ public class ViewHolderM {
 	}
 	
 	/**
-	 * ÉèÖÃTextViewµÄÄÚÈİ
+	 * è®¾ç½®TextViewçš„å†…å®¹
 	 * @param viewId
-	 * @param text£¬SpannedÀàĞÍ£¬¿ÉÉèÖÃ²¿·Ö×ÖÌå±äÉ«
+	 * @param textï¼ŒSpannedç±»å‹ï¼Œå¯è®¾ç½®éƒ¨åˆ†å­—ä½“å˜è‰²
 	 * @return
 	 */
 	public ViewHolderM setText(int viewId, Spanned text) {
@@ -116,7 +116,7 @@ public class ViewHolderM {
 	}
 	
 	/**
-	 * ÉèÖÃÍ¼Æ¬µÄ¿É¼ûĞÔ
+	 * è®¾ç½®å›¾ç‰‡çš„å¯è§æ€§
 	 * @param viewId
 	 * @param visible
 	 * @return

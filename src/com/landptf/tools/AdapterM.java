@@ -9,19 +9,19 @@ import android.widget.BaseAdapter;
 
 /**
  * @author landptf
- * ¹«¹²µÄAdapter ListÊÊÅäÆ÷
+ * å…¬å…±çš„Adapter Listé€‚é…å™¨
  */
 public abstract class AdapterM<T> extends BaseAdapter {
 
 	private Context context;
-	//Îª·á¸»³ÌĞò¹¦ÄÜ£¬Ìá¹©ÁËÁ½ÖÖ³£¼ûµÄÊı¾İÀàĞÍ
-	private List<T> dataList = null;//Êı¾İÔ´List<T>
-	private T[] dataArray = null;//Êı¾İÔ´T[]
-	//²¼¾ÖÎÄ¼şID
+	//ä¸ºä¸°å¯Œç¨‹åºåŠŸèƒ½ï¼Œæä¾›äº†ä¸¤ç§å¸¸è§çš„æ•°æ®ç±»å‹
+	private List<T> dataList = null;//æ•°æ®æºList<T>
+	private T[] dataArray = null;//æ•°æ®æºT[]
+	//å¸ƒå±€æ–‡ä»¶ID
 	private int layoutId;
 	
 	/**
-	 * ¹¹Ôì·½·¨
+	 * æ„é€ æ–¹æ³•
 	 * @param context
 	 * @param layoutId
 	 * @param dataList
@@ -33,7 +33,7 @@ public abstract class AdapterM<T> extends BaseAdapter {
 	}
 	
 	/**
-	 * ¹¹Ôì·½·¨(ÓëÉÏÒ»¸öÖ»ÓĞÊı¾İÔ´²»Í¬)  
+	 * æ„é€ æ–¹æ³•(ä¸ä¸Šä¸€ä¸ªåªæœ‰æ•°æ®æºä¸åŒ)  
 	 * @param context
 	 * @param layoutId
 	 * @param dataArray
@@ -73,7 +73,7 @@ public abstract class AdapterM<T> extends BaseAdapter {
 		return holder.getConvertView();
 	}
 	/**
-	 * ĞèÊµÏÖµÄ³éÏó·½·¨
+	 * éœ€å®ç°çš„æŠ½è±¡æ–¹æ³•
 	 * @param holder
 	 * @param model
 	 */

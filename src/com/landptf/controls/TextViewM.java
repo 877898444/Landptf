@@ -8,15 +8,15 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * ÖØĞ´TextView ÊµÏÖµã»÷¸Ä±ä×ÖÌåÑÕÉ«
+ * é‡å†™TextView å®ç°ç‚¹å‡»æ”¹å˜å­—ä½“é¢œè‰²
  * @author landptf
  * @date 2015-6-6
  */
 public class TextViewM extends TextView{
-	private int textColori = 0;//¿Ø¼şµÄÎÄ×ÖÑÕÉ«£¬IntĞÍ
-	private String textColors = "";//¿Ø¼şµÄÎÄ×ÖÑÕÉ«£¬StringĞÍ
-	private int textColorSeletedi = 0;//¿Ø¼ş±»°´ÏÂºóµÄÎÄ×ÖÑÕÉ«£¬IntĞÍ
-	private String textColorSeleteds = "";//¿Ø¼ş±»°´ÏÂºóµÄÎÄ×ÖÑÕÉ«£¬StringĞÍ
+	private int textColori = 0;//æ§ä»¶çš„æ–‡å­—é¢œè‰²ï¼ŒIntå‹
+	private String textColors = "";//æ§ä»¶çš„æ–‡å­—é¢œè‰²ï¼ŒStringå‹
+	private int textColorSeletedi = 0;//æ§ä»¶è¢«æŒ‰ä¸‹åçš„æ–‡å­—é¢œè‰²ï¼ŒIntå‹
+	private String textColorSeleteds = "";//æ§ä»¶è¢«æŒ‰ä¸‹åçš„æ–‡å­—é¢œè‰²ï¼ŒStringå‹
 	
 	public TextViewM(Context context) {
 		this(context, null);
@@ -27,30 +27,30 @@ public class TextViewM extends TextView{
 	}
 
 	/**
-	 * ÊµÏÖTextViewµÄ¹¹Ôì·½·¨
+	 * å®ç°TextViewçš„æ„é€ æ–¹æ³•
 	 * @param context
 	 * @param attrs
 	 * @param defStyle
 	 */
 	public TextViewM(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		//ÉèÖÃTextViewµÄTouchÊÂ¼ş
+		//è®¾ç½®TextViewçš„Touchäº‹ä»¶
 		this.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View arg0, MotionEvent event) {
-				//ÉèÖÃÑÕÉ«±ä»¯
+				//è®¾ç½®é¢œè‰²å˜åŒ–
 				setColor(event.getAction());
-				//×¢Òâ´Ë´¦µÄ·µ»ØÖµ£¬ÈôÏëÉèÖÃTextViewµÄClickÊÂ¼ş£¬Ôò·µ»Øfalse
+				//æ³¨æ„æ­¤å¤„çš„è¿”å›å€¼ï¼Œè‹¥æƒ³è®¾ç½®TextViewçš„Clickäº‹ä»¶ï¼Œåˆ™è¿”å›false
 				return true;
 			}
 		});
 	}
-	//ÉèÖÃÑÕÉ«±ä»¯£¬¸Ã·½·¨Îªprivate£¬²»¶ÔÍâ¹«¿ª
+	//è®¾ç½®é¢œè‰²å˜åŒ–ï¼Œè¯¥æ–¹æ³•ä¸ºprivateï¼Œä¸å¯¹å¤–å…¬å¼€
 	private void setColor(int state){
 		try {
-			//¸ù¾İ´«¹ıÀ´µÄMotionEventÖµÀ´ÉèÖÃÎÄ×ÖÑÕÉ«
+			//æ ¹æ®ä¼ è¿‡æ¥çš„MotionEventå€¼æ¥è®¾ç½®æ–‡å­—é¢œè‰²
 			if (state == MotionEvent.ACTION_DOWN) {
-				//Êó±ê°´ÏÂ
+				//é¼ æ ‡æŒ‰ä¸‹
 				if (textColorSeletedi != 0) {
 					setTextColor(textColorSeletedi);
 				}else if (!textColorSeleteds.equals("")) {
@@ -58,9 +58,9 @@ public class TextViewM extends TextView{
 				}
 			}
 			if (state == MotionEvent.ACTION_UP) {
-				//Êó±êÌ§Æğ
+				//é¼ æ ‡æŠ¬èµ·
 				if (textColori == 0 && textColors.equals("")) {
-					//Èç¹ûÎªÉèÖÃÑÕÉ«Öµ£¬ÔòÄ¬ÈÏÎªºÚÉ«
+					//å¦‚æœä¸ºè®¾ç½®é¢œè‰²å€¼ï¼Œåˆ™é»˜è®¤ä¸ºé»‘è‰²
 					setTextColor(Color.BLACK);
 				}else if (textColori != 0) {
 					setTextColor(textColori);
@@ -74,9 +74,9 @@ public class TextViewM extends TextView{
 	}
 	
 	/**
-	 * ÉèÖÃÎÄ×ÖµÄÑÕÉ«
-	 * ÎªÁË²»Ôì³ÉÔ­setTextColorµÄ³åÍ»£¬ÔÚºóÃæ¼Ó¡°i¡±
-	 * @param color intÀàĞÍ
+	 * è®¾ç½®æ–‡å­—çš„é¢œè‰²
+	 * ä¸ºäº†ä¸é€ æˆåŸsetTextColorçš„å†²çªï¼Œåœ¨åé¢åŠ â€œiâ€
+	 * @param color intç±»å‹
 	 */
 	public void setTextColori(int color) {
 		this.textColori = color;
@@ -87,9 +87,9 @@ public class TextViewM extends TextView{
 	}
 
 	/**
-	 * ÉèÖÃÎÄ×ÖµÄÑÕÉ«
-	 * ÎªÁË²»Ôì³ÉÔ­setTextColorµÄ³åÍ»£¬ÔÚºóÃæ¼Ó¡°s¡±
-	 * @param color StringÀàĞÍ
+	 * è®¾ç½®æ–‡å­—çš„é¢œè‰²
+	 * ä¸ºäº†ä¸é€ æˆåŸsetTextColorçš„å†²çªï¼Œåœ¨åé¢åŠ â€œsâ€
+	 * @param color Stringç±»å‹
 	 */
 	public void setTextColors(String color) {
 		this.textColors = color;
@@ -100,16 +100,16 @@ public class TextViewM extends TextView{
 	}
 
 	/**
-	 * ÉèÖÃÎÄ×Ö±»°´ÏÂºóµÄÑÕÉ«
-	 * @param color intÀàĞÍ
+	 * è®¾ç½®æ–‡å­—è¢«æŒ‰ä¸‹åçš„é¢œè‰²
+	 * @param color intç±»å‹
 	 */
 	public void setTextColorSeleted(int textColorSeletedi) {
 		this.textColorSeletedi = textColorSeletedi;
 	}
 	
 	/**
-	 * ÉèÖÃÎÄ×Ö±»°´ÏÂºóµÄÑÕÉ«
-	 * @param color StringÀàĞÍ
+	 * è®¾ç½®æ–‡å­—è¢«æŒ‰ä¸‹åçš„é¢œè‰²
+	 * @param color Stringç±»å‹
 	 */
 	public void setTextColorSeleted(String textColorSeleteds) {
 		this.textColorSeleteds = textColorSeleteds;

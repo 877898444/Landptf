@@ -9,25 +9,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 /**
- * ÖØĞ´Button,×Ô¶¨ÒåButtonÑùÊ½
+ * é‡å†™Button,è‡ªå®šä¹‰Buttonæ ·å¼
  * @author landptf
  * @date 2015-6-8
  */
 public class ButtonM extends Button{
-	private GradientDrawable gradientDrawable;//¿Ø¼şµÄÑùÊ½
-	private String backColors = "";//±³¾°É«£¬StringÀàĞÍ
-	private int backColori = 0;//±³¾°É«£¬intÀàĞÍ
-	private String backColorSelecteds = "";//°´ÏÂºóµÄ±³¾°É«£¬StringÀàĞÍ
-	private int backColorSelectedi = 0;//°´ÏÂºóµÄ±³¾°É«£¬intÀàĞÍ
-	private int backGroundImage = 0;//±³¾°Í¼£¬Ö»Ìá¹©ÁËId
-	private int backGroundImageSeleted = 0;//°´ÏÂºóµÄ±³¾°Í¼£¬Ö»Ìá¹©ÁËId
-	private String textColors = "";//ÎÄ×ÖÑÕÉ«£¬StringÀàĞÍ
-	private int textColori = 0;//ÎÄ×ÖÑÕÉ«£¬intÀàĞÍ
-	private String textColorSeleteds = "";//°´ÏÂºóµÄÎÄ×ÖÑÕÉ«£¬StringÀàĞÍ
-	private int textColorSeletedi = 0;//°´ÏÂºóµÄÎÄ×ÖÑÕÉ«£¬intÀàĞÍ
-	private float radius = 8;//Ô²½Ç°ë¾¶
-	private int shape = 0;//Ô²½ÇÑùÊ½£¬¾ØĞÎ¡¢Ô²ĞÎµÈ£¬ÓÉÓÚ¾ØĞÎµÄIdÎª0£¬Ä¬ÈÏÎª¾ØĞÎ
-	private Boolean fillet = false;//ÊÇ·ñÉèÖÃÔ²½Ç
+	private GradientDrawable gradientDrawable;//æ§ä»¶çš„æ ·å¼
+	private String backColors = "";//èƒŒæ™¯è‰²ï¼ŒStringç±»å‹
+	private int backColori = 0;//èƒŒæ™¯è‰²ï¼Œintç±»å‹
+	private String backColorSelecteds = "";//æŒ‰ä¸‹åçš„èƒŒæ™¯è‰²ï¼ŒStringç±»å‹
+	private int backColorSelectedi = 0;//æŒ‰ä¸‹åçš„èƒŒæ™¯è‰²ï¼Œintç±»å‹
+	private int backGroundImage = 0;//èƒŒæ™¯å›¾ï¼Œåªæä¾›äº†Id
+	private int backGroundImageSeleted = 0;//æŒ‰ä¸‹åçš„èƒŒæ™¯å›¾ï¼Œåªæä¾›äº†Id
+	private String textColors = "";//æ–‡å­—é¢œè‰²ï¼ŒStringç±»å‹
+	private int textColori = 0;//æ–‡å­—é¢œè‰²ï¼Œintç±»å‹
+	private String textColorSeleteds = "";//æŒ‰ä¸‹åçš„æ–‡å­—é¢œè‰²ï¼ŒStringç±»å‹
+	private int textColorSeletedi = 0;//æŒ‰ä¸‹åçš„æ–‡å­—é¢œè‰²ï¼Œintç±»å‹
+	private float radius = 8;//åœ†è§’åŠå¾„
+	private int shape = 0;//åœ†è§’æ ·å¼ï¼ŒçŸ©å½¢ã€åœ†å½¢ç­‰ï¼Œç”±äºçŸ©å½¢çš„Idä¸º0ï¼Œé»˜è®¤ä¸ºçŸ©å½¢
+	private Boolean fillet = false;//æ˜¯å¦è®¾ç½®åœ†è§’
 
 	public ButtonM(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -43,7 +43,7 @@ public class ButtonM extends Button{
 	}
 	
 	private void init() {
-		//½«ButtonµÄÄ¬ÈÏ±³¾°É«¸ÄÎªÍ¸Ã÷£¬±¾ÈË²»Ï²»¶Ô­À´µÄÑÕÉ«
+		//å°†Buttonçš„é»˜è®¤èƒŒæ™¯è‰²æ”¹ä¸ºé€æ˜ï¼Œæœ¬äººä¸å–œæ¬¢åŸæ¥çš„é¢œè‰²
 		if (fillet) {
 			if (gradientDrawable == null) {
 				gradientDrawable = new GradientDrawable();
@@ -52,25 +52,25 @@ public class ButtonM extends Button{
 		}else {
 			setBackgroundColor(Color.TRANSPARENT);
 		}
-		//ÉèÖÃÎÄ×ÖÄ¬ÈÏ¾ÓÖĞ
+		//è®¾ç½®æ–‡å­—é»˜è®¤å±…ä¸­
 		setGravity(Gravity.CENTER);
-		//ÉèÖÃTouchÊÂ¼ş
+		//è®¾ç½®Touchäº‹ä»¶
 		setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View arg0, MotionEvent event) {
-				//°´ÏÂ¸Ä±äÑùÊ½
+				//æŒ‰ä¸‹æ”¹å˜æ ·å¼
 				setColor(event.getAction());
-				//´Ë´¦ÉèÖÃÎªfalse£¬·ÀÖ¹ClickÊÂ¼ş±»ÆÁ±Î
+				//æ­¤å¤„è®¾ç½®ä¸ºfalseï¼Œé˜²æ­¢Clickäº‹ä»¶è¢«å±è”½
 				return false;
 			}
 		});
 	}
-	//¸Ä±äÑùÊ½
+	//æ”¹å˜æ ·å¼
 	private void setColor(int state){
 		if (state == MotionEvent.ACTION_DOWN) {
-			//°´ÏÂ
+			//æŒ‰ä¸‹
 			if (backColorSelectedi != 0) {
-				//ÏÈÅĞ¶ÏÊÇ·ñÉèÖÃÁË°´ÏÂºóµÄ±³¾°É«intĞÍ
+				//å…ˆåˆ¤æ–­æ˜¯å¦è®¾ç½®äº†æŒ‰ä¸‹åçš„èƒŒæ™¯è‰²intå‹
 				if (fillet) {
 					if (gradientDrawable == null) {
 						gradientDrawable = new GradientDrawable();
@@ -89,21 +89,21 @@ public class ButtonM extends Button{
 					setBackgroundColor(Color.parseColor(backColorSelecteds));
 				}
 			}
-			//ÅĞ¶ÏÊÇ·ñÉèÖÃÁË°´ÏÂºóÎÄ×ÖµÄÑÕÉ«
+			//åˆ¤æ–­æ˜¯å¦è®¾ç½®äº†æŒ‰ä¸‹åæ–‡å­—çš„é¢œè‰²
 			if (textColorSeletedi != 0) {
 				setTextColor(textColorSeletedi);
 			}else if (!textColorSeleteds.equals("")) {
 				setTextColor(Color.parseColor(textColorSeleteds));
 			}
-			//ÅĞ¶ÏÊÇ·ñÉèÖÃÁË°´ÏÂºóµÄ±³¾°Í¼
+			//åˆ¤æ–­æ˜¯å¦è®¾ç½®äº†æŒ‰ä¸‹åçš„èƒŒæ™¯å›¾
 			if (backGroundImageSeleted != 0) {
 				setBackgroundResource(backGroundImageSeleted);
 			}
 		}
 		if (state == MotionEvent.ACTION_UP) {
-			//Ì§Æğ
+			//æŠ¬èµ·
 			if (backColori == 0 && backColors.equals("")) {
-				//Èç¹ûÃ»ÓĞÉèÖÃ±³¾°É«£¬Ä¬ÈÏ¸ÄÎªÍ¸Ã÷
+				//å¦‚æœæ²¡æœ‰è®¾ç½®èƒŒæ™¯è‰²ï¼Œé»˜è®¤æ”¹ä¸ºé€æ˜
 				if (fillet) {
 					if (gradientDrawable == null) {
 						gradientDrawable = new GradientDrawable();
@@ -131,7 +131,7 @@ public class ButtonM extends Button{
 					setBackgroundColor(Color.parseColor(backColors));
 				}
 			}
-			//Èç¹ûÎªÉèÖÃ×ÖÌåÑÕÉ«£¬Ä¬ÈÏÎªºÚÉ«
+			//å¦‚æœä¸ºè®¾ç½®å­—ä½“é¢œè‰²ï¼Œé»˜è®¤ä¸ºé»‘è‰²
 			if (textColori == 0 && textColors.equals("")) {
 				setTextColor(Color.BLACK);
 			}else if (textColori != 0) {
@@ -146,7 +146,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥µÄ±³¾°É«,Èç¹ûÎ´ÉèÖÃÔòÄ¬ÈÏÎªÍ¸Ã÷
+	 * è®¾ç½®æŒ‰é’®çš„èƒŒæ™¯è‰²,å¦‚æœæœªè®¾ç½®åˆ™é»˜è®¤ä¸ºé€æ˜
 	 * @param backColor
 	 */
 	public void setBackColor(String backColor) {
@@ -173,7 +173,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥µÄ±³¾°É«,Èç¹ûÎ´ÉèÖÃÔòÄ¬ÈÏÎªÍ¸Ã÷
+	 * è®¾ç½®æŒ‰é’®çš„èƒŒæ™¯è‰²,å¦‚æœæœªè®¾ç½®åˆ™é»˜è®¤ä¸ºé€æ˜
 	 * @param backColor
 	 */
 	public void setBackColor(int backColor) {
@@ -200,7 +200,7 @@ public class ButtonM extends Button{
 	}
 
 	/**
-	 * ÉèÖÃ°´Å¥°´ÏÂºóµÄÑÕÉ«
+	 * è®¾ç½®æŒ‰é’®æŒ‰ä¸‹åçš„é¢œè‰²
 	 * @param backColorSelected
 	 */
 	public void setBackColorSelected(int backColorSelected) {
@@ -208,7 +208,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥°´ÏÂºóµÄÑÕÉ«
+	 * è®¾ç½®æŒ‰é’®æŒ‰ä¸‹åçš„é¢œè‰²
 	 * @param backColorSelected
 	 */
 	public void setBackColorSelected(String backColorSelected) {
@@ -218,7 +218,7 @@ public class ButtonM extends Button{
 	
 
 	/**
-	 * ÉèÖÃ°´Å¥µÄ±³¾°Í¼
+	 * è®¾ç½®æŒ‰é’®çš„èƒŒæ™¯å›¾
 	 * @param backGroundImage
 	 */
 	public void setBackGroundImage(int backGroundImage) {
@@ -229,7 +229,7 @@ public class ButtonM extends Button{
 	}
 
 	/**
-	 * ÉèÖÃ°´Å¥°´ÏÂµÄ±³¾°Í¼
+	 * è®¾ç½®æŒ‰é’®æŒ‰ä¸‹çš„èƒŒæ™¯å›¾
 	 * @param backGroundImageSeleted
 	 */
 	public void setBackGroundImageSeleted(int backGroundImageSeleted) {
@@ -237,7 +237,7 @@ public class ButtonM extends Button{
 	}
 
 	/**
-	 * ÉèÖÃ°´Å¥Ô²½Ç°ë¾¶´óĞ¡
+	 * è®¾ç½®æŒ‰é’®åœ†è§’åŠå¾„å¤§å°
 	 * @param radius
 	 */
 	public void setRadius(float radius) {
@@ -248,7 +248,7 @@ public class ButtonM extends Button{
 	}
 
 	/**
-	 * ÉèÖÃ°´Å¥ÎÄ×ÖÑÕÉ«
+	 * è®¾ç½®æŒ‰é’®æ–‡å­—é¢œè‰²
 	 * @param textColor
 	 */
 	public void setTextColors(String textColor) {
@@ -257,7 +257,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥ÎÄ×ÖÑÕÉ«
+	 * è®¾ç½®æŒ‰é’®æ–‡å­—é¢œè‰²
 	 * @param textColor
 	 */
 	public void setTextColori(int textColor) {
@@ -266,7 +266,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥°´ÏÂµÄÎÄ×ÖÑÕÉ«
+	 * è®¾ç½®æŒ‰é’®æŒ‰ä¸‹çš„æ–‡å­—é¢œè‰²
 	 * @param textColor
 	 */
 	public void setTextColorSelected(String textColor) {
@@ -274,7 +274,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥°´ÏÂµÄÎÄ×ÖÑÕÉ«
+	 * è®¾ç½®æŒ‰é’®æŒ‰ä¸‹çš„æ–‡å­—é¢œè‰²
 	 * @param textColor
 	 */
 	public void setTextColorSelected(int textColor) {
@@ -282,7 +282,7 @@ public class ButtonM extends Button{
 	}
 	
 	/**
-	 * °´Å¥µÄĞÎ×´
+	 * æŒ‰é’®çš„å½¢çŠ¶
 	 * @param shape
 	 */
 	public void setShape(int shape) {
@@ -290,7 +290,7 @@ public class ButtonM extends Button{
 	}
 
 	/**
-	 * ÉèÖÃÆäÊÇ·ñÎªÔ²½Ç
+	 * è®¾ç½®å…¶æ˜¯å¦ä¸ºåœ†è§’
 	 * @param fillet
 	 */
 	public void setFillet(Boolean fillet) {

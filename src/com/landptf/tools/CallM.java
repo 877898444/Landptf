@@ -6,7 +6,7 @@ import android.net.Uri;
 
 public class CallM {
 	/**
-	 * ����绰
+	 * 直接拨打电话
 	 * @param context
 	 * @param number
 	 */
@@ -16,7 +16,7 @@ public class CallM {
 	}
 	
 	/**
-	 * 拨打电话之前显示拨号�?
+	 * 拨打电话之前显示拨号界面
 	 * @param context
 	 * @param number
 	 */

@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Ê±¼ä°ïÖúÀà
+ * æ—¶é—´å¸®åŠ©ç±»
  * @author landptf
  * @date 2015-5-22
  */
@@ -14,7 +14,7 @@ public class DateM {
 	private static String parttern = "yyyy-MM-dd HH:mm:ss";
 	
 	/**
-	 * »ñÈ¡µ±Ç°Ê±¼ä£¬¸ñÊ½"yyyy-MM-dd HH:mm:ss"
+	 * è·å–å½“å‰æ—¶é—´ï¼Œæ ¼å¼"yyyy-MM-dd HH:mm:ss"
 	 * @return
 	 */
 	public static String getNow(){
@@ -22,7 +22,7 @@ public class DateM {
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°Ê±¼ä£¬×Ô¶¨Òå¸ñÊ½
+	 * è·å–å½“å‰æ—¶é—´ï¼Œè‡ªå®šä¹‰æ ¼å¼
 	 * @param parttern
 	 * @return
 	 */
@@ -32,7 +32,7 @@ public class DateM {
 	}
 	
 	/**
-	 * Ò»ÖÜÇ°µÄÈÕÆÚ
+	 * ä¸€å‘¨å‰çš„æ—¥æœŸ
 	 * @return
 	 */
 	public static String lastWeek() {
@@ -74,7 +74,7 @@ public class DateM {
 	}
 	
 	/**
-	 * »ñµÃ¼¸¸öÔÂÇ°µÄÈÕÆÚ
+	 * è·å¾—å‡ ä¸ªæœˆå‰çš„æ—¥æœŸ
 	 * @param allMonth
 	 * @return
 	 */
