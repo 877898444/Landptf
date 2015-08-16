@@ -63,7 +63,7 @@ public class TitleBarM extends RelativeLayout{
 		//设置RelativeLayout的布局
 		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
 		//设置默认的背景色
-		setBackgroundColor(Color.parseColor("#000000"));
+		setBackgroundColor(Color.parseColor("#009933"));
 		init();
 	}
 
