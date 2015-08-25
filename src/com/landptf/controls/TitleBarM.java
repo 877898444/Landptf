@@ -13,6 +13,24 @@ import android.widget.TextView;
  * @date 2015-6-10
  */
 public class TitleBarM extends RelativeLayout{
+	
+	/**
+	 * position is left
+	 */
+	public static final int TITLE_POSITION_LEFT = 0;
+	/**
+	 * position is center
+	 */
+	public static final int TITLE_POSITION_CENTER = 1;
+	/**
+	 * position is right
+	 */
+	public static final int TITLE_POSITION_RIGHT = 2;
+	
+	private static final int BTNLEFT_ID = 0x0001;
+	private static final int BTNRIGHT_ID = 0x0002;
+	
+	
 	private Context context;
 	//定义三个控件
 	private ButtonM btnLeft;
@@ -70,6 +88,7 @@ public class TitleBarM extends RelativeLayout{
 	private void init() {
 		//初始化左侧ButtonM
 		btnLeft = new ButtonM(context);
+		btnLeft.setId(BTNLEFT_ID);
 		RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		//垂直居中
 		lp.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -100,6 +119,7 @@ public class TitleBarM extends RelativeLayout{
 		tvTitle.setTextSize(18);//默认为18
 		//初始化右侧ButtonM
 		btnRight = new ButtonM(context);
+		btnRight.setId(BTNRIGHT_ID);
 		lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		lp.rightMargin = dp2px(context, 10);
 		//垂直居中
@@ -252,6 +272,33 @@ public class TitleBarM extends RelativeLayout{
 	 */
 	public void setRightVisible(boolean rightVisible) {
 		btnRight.setVisibility(rightVisible ? View.VISIBLE : View.GONE); 
+	}
+	
+	public void setTitlePosition(int position){
+		RelativeLayout.LayoutParams lp;
+		switch (position) {
+		case TITLE_POSITION_LEFT:
+			lp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_VERTICAL);
+			lp.addRule(RelativeLayout.RIGHT_OF,BTNLEFT_ID);
+			lp.leftMargin = dp2px(context, 5);
+			tvTitle.setLayoutParams(lp);
+			break;
+		case TITLE_POSITION_CENTER:
+			
+			break;
+		case TITLE_POSITION_RIGHT:
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_VERTICAL);
+			lp.addRule(RelativeLayout.LEFT_OF,BTNRIGHT_ID);
+			lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+			//暂时写死吧！
+			lp.rightMargin = dp2px(context, 50);
+			tvTitle.setLayoutParams(lp);
+			break;
+		default:
+			break;
+		}
 	}
 	
 	//定义一个私有方法dp2px

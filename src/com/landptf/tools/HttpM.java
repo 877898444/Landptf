@@ -26,7 +26,7 @@ import org.apache.http.util.EntityUtils;
  */
 public class HttpM {
 	
-	private static final int TIMEOUT_IN_MILLIONS = 10000;  
+	private static final int TIMEOUT_IN_MILLIONS = 30000;  
 	 
     public interface CallBack {  
         void onRequestComplete(String result);  
