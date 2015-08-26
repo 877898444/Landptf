@@ -291,9 +291,7 @@ public class TitleBarM extends RelativeLayout{
 			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 			lp.addRule(RelativeLayout.CENTER_VERTICAL);
 			lp.addRule(RelativeLayout.LEFT_OF,BTNRIGHT_ID);
-			lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-			//暂时写死吧！
-			lp.rightMargin = dp2px(context, 50);
+			lp.rightMargin = dp2px(context, 5);
 			tvTitle.setLayoutParams(lp);
 			break;
 		default:
