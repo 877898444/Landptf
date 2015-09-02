@@ -56,7 +56,6 @@ public class MessageItemM extends RelativeLayout {
 	public MessageItemM(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		this.context = context;
-		//默认宽度56dp
 		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
 		setBackgroundColor(android.graphics.Color.WHITE);
 		setOnTouchListener(new OnTouchListener() {
