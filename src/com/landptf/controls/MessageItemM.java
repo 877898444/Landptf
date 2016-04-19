@@ -106,8 +106,7 @@ public class MessageItemM extends RelativeLayout {
 		btmTip.setShape(GradientDrawable.OVAL);
 		btmTip.setFillet(true);
 		btmTip.setTextColori(android.graphics.Color.WHITE);
-		btmTip.setTextSize(14);
-		btmTip.setShape(GradientDrawable.OVAL);
+		btmTip.setTextSize(16);
 		btmTip.setRadius(15);
 		/*back color is red*/
 		btmTip.setBackColor(Color.parseColor("#ff0000"));
@@ -167,24 +166,21 @@ public class MessageItemM extends RelativeLayout {
 	 * set the title show state that change the tvContent position 
 	 * @param visible
 	 */
-	public void setVisibleTitle(Boolean visible){
+	public void setVisibleContent(Boolean visible){
 		RelativeLayout.LayoutParams lp;
 		if (visible) {
-			tvTitle.setVisibility(View.VISIBLE);
+			tvContent.setVisibility(View.VISIBLE);
 			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-			lp.addRule(RelativeLayout.LEFT_OF, btmTip.getId());
 			lp.addRule(RelativeLayout.RIGHT_OF, ivIcon.getId());
-			lp.addRule(RelativeLayout.BELOW, tvTitle.getId());
-			lp.rightMargin = 5;
-			lp.bottomMargin = 5;
-			tvContent.setLayoutParams(lp);
+			lp.setMargins(0, 5, 0, 5);
+			tvTitle.setLayoutParams(lp);
 		}else {
-			tvTitle.setVisibility(View.GONE);
+			tvContent.setVisibility(View.GONE);
 			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 			lp.addRule(RelativeLayout.LEFT_OF, btmTip.getId());
 			lp.addRule(RelativeLayout.RIGHT_OF, ivIcon.getId());
 			lp.addRule(RelativeLayout.CENTER_VERTICAL);
-			tvContent.setLayoutParams(lp);
+			tvTitle.setLayoutParams(lp);
 		}
 	} 
 	
