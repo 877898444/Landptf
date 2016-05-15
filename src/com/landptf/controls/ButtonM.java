@@ -76,6 +76,7 @@ public class ButtonM extends Button{
 						gradientDrawable = new GradientDrawable();
 					}
 					gradientDrawable.setColor(backColorSelectedi);
+					
 				}else {
 					setBackgroundColor(backColorSelectedi);
 				}
@@ -143,6 +144,9 @@ public class ButtonM extends Button{
 				setBackgroundResource(backGroundImage);
 			}
 		}
+		if(fillet){
+			setBackgroundDrawable(gradientDrawable);
+		}
 	}
 	
 	/**
@@ -170,6 +174,9 @@ public class ButtonM extends Button{
 				setBackgroundColor(Color.parseColor(backColor));
 			}
 		}
+		if(fillet){
+			setBackgroundDrawable(gradientDrawable);
+		}
 	}
 	
 	/**
@@ -196,6 +203,9 @@ public class ButtonM extends Button{
 			}else {
 				setBackgroundColor(backColor);
 			}
+		}
+		if(fillet){
+			setBackgroundDrawable(gradientDrawable);
 		}
 	}
 
@@ -245,6 +255,7 @@ public class ButtonM extends Button{
 			gradientDrawable = new GradientDrawable();
 		}
 		gradientDrawable.setCornerRadius(radius);
+		setBackgroundDrawable(gradientDrawable);
 	}
 
 	/**

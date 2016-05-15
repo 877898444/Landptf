@@ -41,7 +41,7 @@ public class TextViewM extends TextView{
 				//设置颜色变化
 				setColor(event.getAction());
 				//注意此处的返回值，若想设置TextView的Click事件，则返回false
-				return true;
+				return false;
 			}
 		});
 	}

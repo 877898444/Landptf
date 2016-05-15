@@ -1,5 +1,7 @@
 package com.landptf.controls;
 
+import com.landptf.controls.MenuItemM.OnClickListenerM;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -27,13 +29,13 @@ public class TitleBarM extends RelativeLayout{
 	 */
 	public static final int TITLE_POSITION_RIGHT = 2;
 	
-	private static final int BTNLEFT_ID = 0x0001;
+	private static final int MIMLEFT_ID = 0x0001;
 	private static final int BTNRIGHT_ID = 0x0002;
 	
 	
 	private Context context;
 	//定义三个控件
-	private ButtonM btnLeft;
+	private MenuItemM mimLeft;
 	private TextView tvTitle;
 	private ButtonM btnRight;
 	//定义左侧控件的接口
@@ -86,20 +88,19 @@ public class TitleBarM extends RelativeLayout{
 	}
 
 	private void init() {
-		//初始化左侧ButtonM
-		btnLeft = new ButtonM(context);
-		btnLeft.setId(BTNLEFT_ID);
+		mimLeft = new MenuItemM(context);
+		mimLeft.setId(MIMLEFT_ID);
 		RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		//垂直居中
 		lp.addRule(RelativeLayout.CENTER_VERTICAL);
-		//设置距离左侧10dp
-		lp.leftMargin = dp2px(context, 10);
-		btnLeft.setLayoutParams(lp);
-		btnLeft.setTextSize(16);//设置字体大小,默认为16
-		btnLeft.setTextColori(Color.WHITE);//默认字体颜色为白色
-		btnLeft.setTextColorSelected("#909090");//按下后的字体颜色
-		//定义其点击事件
-		btnLeft.setOnClickListener(new OnClickListener() {
+		//设置距离左侧5dp
+		lp.leftMargin = dp2px(context, 5);
+		mimLeft.setLayoutParams(lp);
+		mimLeft.setTextSize(18);//设置字体大小,默认为16
+		mimLeft.setTextColor(Color.WHITE);//默认字体颜色为白色
+		mimLeft.setTextColorSelected("#909090");//按下后的字体颜色
+		mimLeft.setIconStyle(MenuItemM.STYLE_ICON_LEFT);
+		mimLeft.setOnClickListener(new OnClickListenerM() {
 			@Override
 			public void onClick(View v) {
 				if (onClickListenerL != null) {
@@ -116,12 +117,12 @@ public class TitleBarM extends RelativeLayout{
 		//设置标题文字颜色
 		tvTitle.setTextColor(Color.WHITE);
 		//设置标题文字大小
-		tvTitle.setTextSize(18);//默认为18
+		tvTitle.setTextSize(20);//默认为18
 		//初始化右侧ButtonM
 		btnRight = new ButtonM(context);
 		btnRight.setId(BTNRIGHT_ID);
 		lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		lp.rightMargin = dp2px(context, 10);
+		lp.rightMargin = dp2px(context, 5);
 		//垂直居中
 		lp.addRule(RelativeLayout.CENTER_VERTICAL);
 		//居于父控件的右侧
@@ -141,7 +142,7 @@ public class TitleBarM extends RelativeLayout{
 		});
 		
 		//分别将三个控件加入到容器中
-		addView(btnLeft);
+		addView(mimLeft);
 		addView(tvTitle);
 		addView(btnRight);
 	}
@@ -167,16 +168,32 @@ public class TitleBarM extends RelativeLayout{
 	 * @param leftText
 	 */
 	public void setLeftText(String leftText) {
-		btnLeft.setText(leftText);
+		mimLeft.setText(leftText);
 	}
-
+	
+	/**
+	 * 设置左侧控件的文字颜色
+	 * @param leftBackImageSeleted
+	 */
+	public void setLeftTextColor(int resId){
+		mimLeft.setTextColor(resId);
+	}
+	
+	/**
+	 * 设置左侧控件选中的文字颜色
+	 * @param leftBackImageSeleted
+	 */
+	public void setLeftTextColorSelected(int resId){
+		mimLeft.setTextColorSelected(resId);
+	}
+	
 	/**
 	 * 设置左侧控件的背景图
 	 * @param leftBackImage
 	 */
 	public void setLeftBackImage(int leftBackImage) {
 		if (leftBackImage != 0) {
-			btnLeft.setBackGroundImage(leftBackImage);
+			mimLeft.setBackground(leftBackImage);
 		}
 	}
 
@@ -186,7 +203,7 @@ public class TitleBarM extends RelativeLayout{
 	 */
 	public void setLeftBackImageSeleted(int leftBackImageSeleted) {
 		if (leftBackImageSeleted != 0) {
-			btnLeft.setBackGroundImageSeleted(leftBackImageSeleted);
+			mimLeft.setBackgroundSelected(leftBackImageSeleted);
 		}
 	}
 
@@ -195,7 +212,7 @@ public class TitleBarM extends RelativeLayout{
 	 * @param leftVisible
 	 */
 	public void setLeftVisible(boolean leftVisible) {
-		btnLeft.setVisibility(leftVisible ? View.VISIBLE : View.GONE); 
+		mimLeft.setVisibility(leftVisible ? View.VISIBLE : View.GONE); 
 	}
 
 	/**
@@ -203,7 +220,7 @@ public class TitleBarM extends RelativeLayout{
 	 * @param leftTextSize
 	 */
 	public void setLeftTextSize(float leftTextSize) {
-		btnLeft.setTextSize(leftTextSize);
+		mimLeft.setTextSize(leftTextSize);
 	}
 	
 	/**
@@ -229,7 +246,20 @@ public class TitleBarM extends RelativeLayout{
 	public void setTitleTextSize(float titleTextSize) {
 		tvTitle.setTextSize(titleTextSize);
 	}
-	
+	/**
+	 * 设置中间控件文字的颜色
+	 * @param color
+	 */
+	public void setTitleTextColor(int color){
+		tvTitle.setTextColor(color);
+	}
+	/**
+	 * 设置中间控件文字的颜色
+	 * @param color
+	 */
+	public void setTitleTextColor(String color){
+		tvTitle.setTextColor(Color.parseColor(color));
+	}
 	/**
 	 * 设置右侧控件显示的文字
 	 * @param leftText
@@ -280,7 +310,7 @@ public class TitleBarM extends RelativeLayout{
 		case TITLE_POSITION_LEFT:
 			lp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 			lp.addRule(RelativeLayout.CENTER_VERTICAL);
-			lp.addRule(RelativeLayout.RIGHT_OF,BTNLEFT_ID);
+			lp.addRule(RelativeLayout.RIGHT_OF,MIMLEFT_ID);
 			lp.leftMargin = dp2px(context, 5);
 			tvTitle.setLayoutParams(lp);
 			break;

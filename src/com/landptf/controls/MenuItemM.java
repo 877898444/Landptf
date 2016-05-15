@@ -3,17 +3,24 @@ package com.landptf.controls;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 /**
- * 自定义底部选项卡
+ * 图标与文字组合的按钮
  * @author landptf
  * @date 2015-7-29
  */
 public class MenuItemM extends RelativeLayout{
+	public static final int STYLE_ICON_LEFT				= 1;
+	public static final int STYLE_ICON_RIGHT			= 2;
+	public static final int STYLE_ICON_UP				= 3;
+	public static final int STYLE_ICON_DOWN				= 4;
+	
 	//控件
 	private Context context;
 	private ImageView ivIcon;
@@ -77,12 +84,15 @@ public class MenuItemM extends RelativeLayout{
 		ivIcon.setId(1);
 		RelativeLayout.LayoutParams lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+		lp.topMargin = dp2px(context, 4);
 		ivIcon.setLayoutParams(lp);
 		//文字描述
 		tvItem = new TextView(context);
 		lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-		lp.addRule(RelativeLayout.BELOW, ivIcon.getId());
+		lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+		lp.bottomMargin = dp2px(context, 4);
 		tvItem.setLayoutParams(lp);
 		//NEW提示
 		ivNew = new ImageView(context);
@@ -100,11 +110,15 @@ public class MenuItemM extends RelativeLayout{
 		setMoreVisible(false);
 		//未读数量提示
 		btnmNums = new ButtonM(context);
-		lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+		lp=new RelativeLayout.LayoutParams(dp2px(context,20),dp2px(context,20));
 		lp.addRule(RelativeLayout.RIGHT_OF, ivIcon.getId());
 		lp.addRule(RelativeLayout.ALIGN_TOP, ivIcon.getId());
 		btnmNums.setLayoutParams(lp);
 		btnmNums.setFillet(true);
+		btnmNums.setShape(GradientDrawable.OVAL);
+		btnmNums.setRadius(15);
+		/*back color is red*/
+		btnmNums.setBackColor(Color.parseColor("#ff0000"));
 		btnmNums.setTextColori(Color.WHITE);
 		btnmNums.setTextSize(12);
 		setNumsCount(0);
@@ -146,6 +160,54 @@ public class MenuItemM extends RelativeLayout{
 		
 	}
 	
+	/**
+	 * 设置图标位置
+	 * @param style
+	 */
+	public void setIconStyle(int style){
+		RelativeLayout.LayoutParams lp;
+		switch (style) {
+		case STYLE_ICON_LEFT:
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_VERTICAL);
+			ivIcon.setLayoutParams(lp);
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_VERTICAL);
+			lp.addRule(RelativeLayout.RIGHT_OF, ivIcon.getId());
+			tvItem.setLayoutParams(lp);
+			break;
+		case STYLE_ICON_RIGHT:
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_VERTICAL);
+			ivIcon.setLayoutParams(lp);
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_VERTICAL);
+			lp.addRule(RelativeLayout.LEFT_OF, ivIcon.getId());
+			lp.rightMargin = dp2px(context, 5);
+			tvItem.setLayoutParams(lp);
+			break;
+		case STYLE_ICON_UP:
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			ivIcon.setLayoutParams(lp);
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			lp.addRule(RelativeLayout.BELOW, ivIcon.getId());
+			tvItem.setLayoutParams(lp);
+			break;
+		case STYLE_ICON_DOWN:
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			ivIcon.setLayoutParams(lp);
+			lp=new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			lp.addRule(RelativeLayout.ABOVE, ivIcon.getId());
+			tvItem.setLayoutParams(lp);
+			break;
+		default:
+			break;
+		}
+	}
 	
 	/**
 	 * 设置图标
@@ -215,6 +277,13 @@ public class MenuItemM extends RelativeLayout{
 		this.textColorSeleteds = color;
 	}
 	/**
+	 * 设置文字大小
+	 * @param size
+	 */
+	public void setTextSize(float size){
+		tvItem.setTextSize(size);
+	}
+	/**
 	 * 设置NEW提示
 	 * @param newIcon
 	 */
@@ -269,7 +338,11 @@ public class MenuItemM extends RelativeLayout{
 	 * @param count
 	 */
 	public void setNumsCount(int count){
-		btnmNums.setText(String.valueOf(count));
+		if (count > 99) {
+			btnmNums.setText("");
+		}else {
+			btnmNums.setText(String.valueOf(count));
+		}
 		if (count > 0) {
 			setNumsVisible(true);
 		}else {
@@ -282,5 +355,10 @@ public class MenuItemM extends RelativeLayout{
 	 */
 	public void setNumsVisible(boolean isVisible){
 		btnmNums.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+	}
+	
+	private int dp2px(Context context, float dpVal) {
+		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+				dpVal, context.getResources().getDisplayMetrics());
 	}
 }
